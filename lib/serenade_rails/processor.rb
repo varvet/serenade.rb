@@ -1,13 +1,8 @@
 require 'sprockets/engines'
 require 'tilt'
-require 'action_view'
-require 'action_view/helpers'
-require 'action_view/helpers/javascript_helper'
 
-module Sprockets
-  class SerenadeProcessor < Tilt::Template
-    include ActionView::Helpers::JavaScriptHelper
-
+module SerenadeRails
+  class Processor < Tilt::Template
     def self.default_mime_type
       'application/javascript'
     end
@@ -20,7 +15,6 @@ module Sprockets
       SerenadeRails::Template.new(name, data.dup).render
     end
   end
-
-  register_engine '.serenade', ::Sprockets::SerenadeProcessor
 end
 
+Sprockets.register_engine '.serenade', SerenadeRails::Processor
