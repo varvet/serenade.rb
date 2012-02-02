@@ -19,7 +19,7 @@ you prefer:
 //= require serenade
 ```
 
-You can now use Serenade! See the [Serenade README][readme] for
+Serenade should now be loaded and ready. See the [Serenade README][readme] for
 examples.
 
 ## Views
