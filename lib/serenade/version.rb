@@ -1,6 +1,4 @@
 module Serenade
-  # Gem version. Follows semantic versioning.
-  #
-  # @note This is *not* the serenade.js version.
-  VERSION = "0.1.0"
+  # Serenade.js version this gem is bundled with.
+  VERSION = "0.2.1"
 end
