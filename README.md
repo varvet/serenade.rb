@@ -1,54 +1,83 @@
-# Serenade.js for Ruby on Rails
+# Serenade.js for Ruby
 
-[Serenade.js] is a JavaScript client side MVC framework. This gem makes it
-easy to use Serenade.js with the Ruby on Rails Asset Pipeline in Rails
-3.1 and later.
+[Serenade.js] is a JavaScript client side MVC framework. This gem makes Serenade.js
+available for usage with [Sprockets], or the asset pipeline in Ruby on Rails version
+3.1 or later.
 
-Add it to the assets group in your Gemfile:
+[serenade.js]: https://github.com/elabs/serenade.js
+[sprockets]: http://rubygems.org/gems/sprockets
 
-``` ruby
+## Installation
+
+To use Serenade with Rails, add Serenade to the assets group in your Gemfile:
+
+```
 group :assets do
-  gem 'serenade_rails'
+  gem "serenade", :require => "serenade/rails"
 end
 ```
 
-You can now require Serenade in your `application.js` file, or wherever
-you prefer:
+You can now require Serenade in your `app/assets/javascripts/application.js` file:
 
-``` javascript
+```
 //= require serenade
 ```
 
-Serenade should now be loaded and ready. See the [Serenade README][readme] for
-examples.
+Serenade should now be loaded and ready. See the [Serenade README] for examples.
 
-## Views
+[Serenade README]: https://github.com/elabs/serenade.js/blob/master/README.md
 
-You can also easily use views from the asset pipeline. Just use the extension
-`.serenade` on your views, for example, place something like this in
-`app/assets/javascripts/test.serenade`:
+### Using Serenade with Sprockets
+
+If you are not using Rails, you can still use Serenade with just Sprockets:
 
 ```
-h1 "Hello world"
+gem "serenade", :require => "serenade/sprockets"
+```
+
+You’ll also need to register the Serenade asset path with your Sprockets environment.
+
+```
+sprockets.append_path Serenade::ASSET_PATH
+```
+
+## Serenade.js views and the asset pipeline
+
+Serenade.js allows Sprockets or the Rails asset pipeline to compile your Serenade
+views for you, just use the extension `.serenade` on any asset file.  Your views
+will be precompiled server-side before being served to the client.
+
+For example, if you create the following view in `app/assets/javascripts/test.serenade`:
+
+```
+h1 "Hello " @name
 ```
 
 Now you can render this view:
 
-``` javascript
-document.appendChild(Serenade.render('test'));
+```
+var model = new Serenade.Model({ name: "Vega" })
+document.body.appendChild(Serenade.render('test', model));
 ```
 
-Couldn't be simpler!
+And, like in all Serenade.js views, you can change your model and see the DOM
+update itself accordingly:
 
-If the path to your view starts with `views`, that initial part is stripped
-off, so you could have placed the above view in
-`app/assets/javascripts/views/test.serenade` without changing the code.
+```
+model.name = "Mercedes" // HTML now says <h1>Hello Mercedes</h1>
+```
+
+### A note about the view path
+
+If the path to your view starts with `views`, that initial part is stripped off,
+so you could have placed the above view in `app/assets/javascripts/views/test.serenade`
+without changing the code.
 
 ## License
 
 (The MIT License)
 
-Copyright (c) 2012 Jonas Nicklas
+Copyright (c) 2012 Jonas Nicklas, Kim Burgestrand
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -68,6 +97,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-[readme]: https://github.com/elabs/serenade.js/blob/master/README.md
-[serenade.js]: https://github.com/elabs/serenade.js
