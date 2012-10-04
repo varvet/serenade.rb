@@ -11,7 +11,7 @@ available for usage with [Sprockets], or the asset pipeline in Ruby on Rails ver
 
 To use Serenade with Rails, add Serenade to the assets group in your Gemfile:
 
-```
+``` ruby
 group :assets do
   gem "serenade", :require => "serenade/rails"
 end
@@ -19,7 +19,7 @@ end
 
 You can now require Serenade in your `app/assets/javascripts/application.js` file:
 
-```
+``` javascript
 //= require serenade
 ```
 
@@ -31,13 +31,13 @@ Serenade should now be loaded and ready. See the [Serenade README] for examples.
 
 If you are not using Rails, you can still use Serenade with just Sprockets:
 
-```
+``` ruby
 gem "serenade", :require => "serenade/sprockets"
 ```
 
 You’ll also need to register the Serenade asset path with your Sprockets environment.
 
-```
+``` ruby
 sprockets.append_path Serenade::ASSET_PATH
 ```
 
@@ -49,13 +49,13 @@ will be precompiled server-side before being served to the client.
 
 For example, if you create the following view in `app/assets/javascripts/test.serenade`:
 
-```
+``` serenade
 h1 "Hello " @name
 ```
 
 Now you can render this view:
 
-```
+``` javascript
 var model = new Serenade.Model({ name: "Vega" })
 document.body.appendChild(Serenade.render('test', model));
 ```
@@ -63,7 +63,7 @@ document.body.appendChild(Serenade.render('test', model));
 And, like in all Serenade.js views, you can change your model and see the DOM
 update itself accordingly:
 
-```
+``` javascript
 model.name = "Mercedes" // HTML now says <h1>Hello Mercedes</h1>
 ```
 
