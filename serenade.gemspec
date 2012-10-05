@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.license       = "MIT License"
 
   gem.summary       = "Serenade.js for Ruby, Rails, and Sprockets"
-  gem.homepage      = "https://github.com/elabs/serenade"
+  gem.homepage      = "https://github.com/elabs/serenade.rb"
   gem.description   = <<-TEXT
 - Use serenade.js with the Rails asset pipeline.
 - Use serenade.js with any sprockets application (middlemanapp, sinatra).
