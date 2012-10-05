@@ -3,7 +3,7 @@ require "multi_json"
 
 module Serenade
   # Absolute path to the directory containing the Serenade assets.
-  ASSET_PATH = File.expand_path("../../assets/javascripts", File.dirname(__FILE__))
+  ASSET_PATH = File.expand_path("../assets/javascripts", File.dirname(__FILE__))
 
   # Absolute path to the bundled serenade.js.
   SERENADEJS_PATH = File.join(ASSET_PATH, "serenade.js")
