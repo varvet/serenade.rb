@@ -21,6 +21,8 @@ You can now require Serenade in your `app/assets/javascripts/application.js` fil
 
 ``` javascript
 //= require serenade
+// Include folder of views (*.serenade)
+//= require views
 ```
 
 Serenade should now be loaded and ready. See the [Serenade README] for examples.
