@@ -1,3 +1,5 @@
+# PROJECT IS ARCHIVED, DO NOT USE
+
 # Serenade.js for Ruby
 
 [Serenade.js] is a JavaScript client side MVC framework. This gem makes Serenade.js
